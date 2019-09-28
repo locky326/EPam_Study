@@ -81,21 +81,25 @@ $doc.Close() #и сразу его закрываем. Ворд не гасим,
 
 #   19.	Подсчитать значение выражения S= . N – изменяемый параметр. Каждый шаг выводить в виде строки. (Пример: На шаге 2 сумма S равна 9)
 
-Write-Host "Введите N"
+Write-Host "Enter N"
 $n = Read-Host
+$s = 0
 for ($i = 1; $i -le $n; $i++)
-{
-    Write-Host "На шаге" $i "сумма S равна" ($i * 3 ) 
-}
-Read-Host -Prompt "Нажмите Enter для продолжения"
+    {
+        $s += ($i *3)
+        Write-Host "On step" $i "amount of S is:" $s  
+    }
+Read-Host -Prompt "Press Enter to continue"
 
 #   20.	Напишите функцию для предыдущего задания. Запустите её на выполнение.
 
 function CountSteps ($n)
     {
+       $s = 0
        for ($i = 1; $i -le $n; $i++)
         {
-            Write-Host "На шаге" $i "сумма S равна" ($i * 3 ) 
+             $s += ($i *3)
+             Write-Host "On step" $i "amount of S is:" $s   
         }
     }
 CountSteps 6 #Вызов функции для 6 шагов.
