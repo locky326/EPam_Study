@@ -25,7 +25,7 @@ Get-Content services.txt
 # 5.	Просуммировать все числовые значения переменных текущего сеанса.
 
 $zz=0
-Get-Variable | foreach-object {$zz+=$_.value}
+Get-Variable | foreach-object {$zz+=$_.value} -ErrorAction SilentlyContinue
 
 # 6.	Вывести список из 6 процессов занимающих дольше всего процессор.
 
