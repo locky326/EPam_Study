@@ -53,12 +53,16 @@ Param (
 #1.5.1.	Сохранить в CSV-файле информацию обо всех обновлениях безопасности ОС.
 #1.5.2.	Сохранить в XML-файле информацию о записях одной ветви реестра HKLM:\SOFTWARE\Microsoft.
 #1.5.3.	Загрузить данные из полученного в п.1.5.1 или п.1.5.2 файла и вывести в виде списка  разным разными цветами
+  #Содержимое файла пятого скрипта.
 
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
-
+Param (
+  [string]$FileCSV = 'update.csv',
+  [string]$FileXML = 'reestr.xml'
+  	     )
+HotFix | where{$_.Description -eq "Security Update"} | Export-Csv $FileCSV
+Get-ChildItem HKLM:\SOFTWARE\Microsoft | Export-Clixml $FileXML
+import-csv  $FileCSV | select -Property CSName, Hotfixid | Write-host -f blue
+import-clixml  $FileXML |  Write-host -f yellow
 
 #2.	Работа с профилем
 #2.1.	Создать профиль
