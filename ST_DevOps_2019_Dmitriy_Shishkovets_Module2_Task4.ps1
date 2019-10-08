@@ -47,4 +47,4 @@ Get-WmiObject Win32_Product | select name, version
 
 register-wmiEvent -query "select * from __instancecreationevent within 5 where targetinstance isa 'Win32_Process' `
 and targetinstance.name='winword.exe'" -sourceIdentifier "Process word" `
--Action {(New-Object -ComObject Wscript.Shell).Popup("Word Started") }
+-Action {(New-Object -ComObject Wscript.Shell).Popup("Word Started") } 
