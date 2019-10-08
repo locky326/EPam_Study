@@ -2,7 +2,7 @@
 
 #1.	При помощи WMI перезагрузить все виртуальные машины.
 $c = get-credential administrator
-$Computers = @("win-1")
+$Computers = @("win-1","win-2","win-3")
 Get-WmiObject win32_operatingsystem -ComputerName $computers -Credential $c | Invoke-WmiMethod -Name reboot
 
 
