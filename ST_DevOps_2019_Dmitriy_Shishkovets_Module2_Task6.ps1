@@ -34,7 +34,23 @@ net share papka121 /delete
 
 #1.6.	Скрипт входными параметрами которого являются Маска подсети и два ip-адреса. Результат  – сообщение (ответ) в одной ли подсети эти адреса.
 
-#####################
+#начало скрипта
+Param
+([parameter(Mandatory=$true)]
+ [string]$Ip1,  
+ [parameter(Mandatory=$true)]
+ [string]$Ip2,  
+ [string]$Mask = "255.255.255.0") 
+#[ipaddress] это [System.Net.IPAddress]
+$IpAdr1 = [ipaddress] $Ip1
+$IpAdr2 = [ipaddress] $Ip2
+$IpMask = [ipaddress] $Mask
+$NetID1 = [IPaddress] ($IpAdr1.Address -band $IpMask.address)
+$NetID2 = [IPaddress] ($IpAdr2.Address -band $IpMask.address)
+if ($NetID1.Address -eq $NetId2.Address)
+    {write-host 'Ouh-Yeah))))))'} else {write-host 'no-No-NO-NOOOOO!!!!!'}
+#окончание скрипта
+
 
 #2.	    Работа с Hyper-V
 #2.1.	Получить список коммандлетов работы с Hyper-V (Module Hyper-V)
